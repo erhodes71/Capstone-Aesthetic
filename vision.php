@@ -1,5 +1,7 @@
 <?php
 
+$picture = "greenhouse";
+
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -10,7 +12,20 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\n  \"requests\":[\n    {\n      \"image\":{\n        \"source\":{\n          \"imageUri\":\n            \"gs://6583929/greenhouse.jpg\"\n        }\n      },\n      \"features\":[\n        {\n          \"type\":\"LABEL_DETECTION\",\n          \"maxResults\":10\n        }\n      ]\n    }\n  ]\n}\n\n",
+  CURLOPT_POSTFIELDS => "{'requests':[{
+                            'image':{
+                              'source':{
+                                'imageUri':'gs://6583929/$picture.jpg'
+                                }
+                              },
+                              'features':[{
+                                'type':'LABEL_DETECTION',
+                                'maxResults':10
+                                }
+                              ]
+                          }
+                          ]
+                        }",
   CURLOPT_HTTPHEADER => array(
     "Cache-Control: no-cache",
     "Content-Type: application/json",
@@ -20,6 +35,8 @@ curl_setopt_array($curl, array(
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
+
+curl_close($curl);
 
 $information = json_decode($response, TRUE);
 
@@ -35,13 +52,3 @@ for ($i = 0; $i <= $length-1; $i++) {
 
 }
 print_r($items);
-
-
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  #print_r($information);
-}
