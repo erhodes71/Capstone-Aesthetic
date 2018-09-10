@@ -10,7 +10,7 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\n  \"requests\":[\n    {\n      \"image\":{\n        \"source\":{\n          \"imageUri\":\n            \"gs://6583929/city1.jpg\"\n        }\n      },\n      \"features\":[\n        {\n          \"type\":\"LABEL_DETECTION\",\n          \"maxResults\":10\n        }\n      ]\n    }\n  ]\n}\n\n",
+  CURLOPT_POSTFIELDS => "{\n  \"requests\":[\n    {\n      \"image\":{\n        \"source\":{\n          \"imageUri\":\n            \"gs://6583929/greenhouse.jpg\"\n        }\n      },\n      \"features\":[\n        {\n          \"type\":\"LABEL_DETECTION\",\n          \"maxResults\":10\n        }\n      ]\n    }\n  ]\n}\n\n",
   CURLOPT_HTTPHEADER => array(
     "Cache-Control: no-cache",
     "Content-Type: application/json",
@@ -23,10 +23,23 @@ $err = curl_error($curl);
 
 $information = json_decode($response, TRUE);
 
+$length = sizeOf($information['responses'][0]['labelAnnotations']);
+#printf($length);
+
+$items = array();
+for ($i = 0; $i <= $length-1; $i++) {
+  $item = $information['responses'][0]['labelAnnotations'][$i]['description'];
+  $items[$i] = $item;
+
+}
+print_r($items);
+
+
+
 curl_close($curl);
 
 if ($err) {
   echo "cURL Error #:" . $err;
 } else {
-  print_r($information);
+  #print_r($information);
 }
