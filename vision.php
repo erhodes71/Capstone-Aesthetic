@@ -26,6 +26,8 @@ $information = json_decode($response, TRUE);
 $length = sizeOf($information['responses'][0]['labelAnnotations']);
 #printf($length);
 
+
+#This will parse the json file we get back and then set the values to the array of item
 $items = array();
 for ($i = 0; $i <= $length-1; $i++) {
   $item = $information['responses'][0]['labelAnnotations'][$i]['description'];
