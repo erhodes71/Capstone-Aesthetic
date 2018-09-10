@@ -10,7 +10,7 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\n  \"requests\":[\n    {\n      \"image\":{\n        \"source\":{\n          \"imageUri\":\n            \"gs://6583929/doggo.jpg\"\n        }\n      },\n      \"features\":[\n        {\n          \"type\":\"LABEL_DETECTION\",\n          \"maxResults\":10\n        }\n      ]\n    }\n  ]\n}\n\n",
+  CURLOPT_POSTFIELDS => "{\n  \"requests\":[\n    {\n      \"image\":{\n        \"source\":{\n          \"imageUri\":\n            \"gs://6583929/city1.jpg\"\n        }\n      },\n      \"features\":[\n        {\n          \"type\":\"LABEL_DETECTION\",\n          \"maxResults\":10\n        }\n      ]\n    }\n  ]\n}\n\n",
   CURLOPT_HTTPHEADER => array(
     "Cache-Control: no-cache",
     "Content-Type: application/json",
