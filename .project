@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>Capstone-Aesthetic</name>
 	<comment></comment>
 	<projects>
@@ -19,5 +20,14 @@
 	<natures>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+=======
+	<name>CapstoneAesthetic</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+>>>>>>> branch 'master' of https://github.com/erhodes71/Capstone-Aesthetic.git
 	</natures>
 </projectDescription>
